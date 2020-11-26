@@ -15,6 +15,9 @@ build:
   script: '{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv '
 
 requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - pip
     - python
@@ -29,8 +32,8 @@ test:
 
 about:
   home: https://github.com/python-trio/sniffio
-  license: APACHE
-  license_family: APACHE
+  license: Apache-2.0
+  license_family: Apache
   license_file: LICENSE.APACHE2
   summary: Sniff out which async library your code is running under
   doc_url: https://sniffio.readthedocs.io
